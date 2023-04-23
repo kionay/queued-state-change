@@ -9,7 +9,7 @@ packages = [{include = "queued_state_change"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 aio-pika = "^9.0.5"
-python-flux = "^0.8.4"
+pydux = "^0.2.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
