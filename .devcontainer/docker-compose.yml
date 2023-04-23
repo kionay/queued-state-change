@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+      - ../rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    networks:
+        - rabbitmq_net
+
+  queued-state-change-development:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
+      # mounts are relative to the first file in the list, which is a level up.
+      - ..:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    networks:
+        - rabbitmq_net
+
+networks:
+  rabbitmq_net:
+    driver: bridge

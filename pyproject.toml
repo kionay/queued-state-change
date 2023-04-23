@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "queued-state-change"
+version = "0.1.0"
+description = ""
+authors = ["Patrick Childers <vbkizonay@gmail.com>"]
+readme = "README.md"
+packages = [{include = "queued_state_change"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aio-pika = "^9.0.5"
+python-flux = "^0.8.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
